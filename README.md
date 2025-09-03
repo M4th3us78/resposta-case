@@ -62,6 +62,11 @@ Siga as intruções abaixo para conseguir executar a aplicação.
 3. **Instale as dependências**
     ``` bash
     pip install -r requirements.txt
+
+
+4. **Entre na pasta do projeto**
+    ``` bash
+    cd code/
     
 
 4. **Execute o Dashboard Streamlit**
