@@ -5,8 +5,9 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import processamento as proc
 import requisicao as req
+import nltk
 from nltk.corpus import stopwords
-
+nltk.download('stopwords')
 
 
 """A busca dos dados"""
