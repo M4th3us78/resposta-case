@@ -5,19 +5,22 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import processamento as proc
 import requisicao as req
-import nltk
 from nltk.corpus import stopwords
 
 
 
-
+"""A busca dos dados"""
 df = req.coleta()
 df = proc.proces_sentimento(df)
 
+st.set_page_config(layout="wide")
 st.title("Painel de Monitoramento de Percepção sobre IA no Piauí.")
-st.header("Notícias Coletadas")
-st.dataframe(df)
 
+"""Tabela com as notícias coletadas"""
+st.header("Notícias Coletadas")
+st.dataframe(df[['titulo', 'sentimento']])
+
+"""Gráfico com a distribuição de sentimentos"""
 st.header("Análise de Sentimentos")
 sent_cont = df['sentimento'].value_counts()
 fig_pie = px.pie(
@@ -28,9 +31,10 @@ fig_pie = px.pie(
     color_discrete_map = {'Positivo':'green' , 'Negativo':'red' , 'Neutro':'blue'}
 )
 st.plotly_chart(fig_pie)
-
+"""Rodapé"""
 st.caption("Esta análise de sentimento é baseada em regras simples e pode não capturar sarcasmo ou contextos complexos")
 
+"""Nuvem de Palavras"""
 st.header("Nuvem de Palavras")
 portuguese_stopwords = set(stopwords.words('portuguese'))
 
@@ -39,5 +43,6 @@ wordcloud = WordCloud(max_words = 15,stopwords=portuguese_stopwords,width=800, h
 
 fig_wc, ax = plt.subplots()
 ax.imshow(wordcloud, interpolation='bilinear')
-ax.axis('off') # Remove os eixos do gráfico
+ax.axis('off')
 st.pyplot(fig_wc)
+
