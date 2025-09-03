@@ -5,12 +5,10 @@ import requisicao as req
 import unicodedata as uni
 
 def proces_sentimento(df):
-    """Palavras selecionas com sentimentos positivos, neutros e negativos"""
+    """Palavras selecionadas para tentar identificar os sentimentos da notícia (positivos e negativos)"""
     positivas = ["referencia","salto","avanço","revolucionar","revoluciona","amplia","ampliar","contribuir","contribui","fortalece","fortalece",
                 "agilizar","capacitar","capacita","destaque","impulsiona","impulsionar","beneficios","modernizar","aprender","prepara","premiado",
                 "inovar","inovacao","qualificar","desenvolvimento","inovacoes","lancamento","lanca"] 
-    neutras = ["discussao","transformando","discutido","aborda","impacto","impactos","desafios","experiencia","regulamentacao","perspectivas","desafios",
-               "desafio","mudar","tendencias","debate","consequencias","molda","promessas","mudancas","redefinindo","criticas",'distinguir']
     negativas = ['temida','negativamente','custo','consumo','riscos','incerta','desumanizar','ma','preucupa','contra','ameacam','perigoso','perigosa','degenerativa',
                  'inimiga','cuidado','substituir','alerta','desinformacao','prejudicar','reduzir','polemica']
 
@@ -19,8 +17,8 @@ def proces_sentimento(df):
         texto_limpo = uni.normalize('NFD', titulo).encode('ascii', 'ignore').decode('utf-8')
         texto_limpo = texto_limpo.lower()
 
+        """Cálculo simples para identificar o sentimento da notícia"""
         sent_positivo = 0
-        sent_neutro = 0
         sent_negativo = 0
 
         for palavra in positivas:
@@ -38,7 +36,6 @@ def proces_sentimento(df):
             df.loc[df['titulo'] == titulo, 'sentimento'] = 'neutro'
 
     return df
-
 
 
 

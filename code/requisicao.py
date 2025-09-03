@@ -2,8 +2,9 @@ import requests
 import xml.etree.ElementTree as ET
 import pandas as pd
 
-
-def coletar_noticias(termo_busca):
+"""Essa função busca notícias com o termo escolhido no feed RSS e retorna os dados(titulo, link e descrição)"""
+def coletar_noticias():
+    termo_busca = "inteligencia artificial no piaui"
     url = f"https://news.google.com/rss/search?q={termo_busca}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
 
     try:
@@ -34,17 +35,15 @@ def coletar_noticias(termo_busca):
         print(f"Erro ao analisar XML: {e}")
         return []
 
+"""Essa função transforma os dados em um dataframe"""
 def coleta():
-    termo = "inteligencia artificial no piaui"
-    noticias = coletar_noticias(termo)
+    noticias = coletar_noticias()
 
     if noticias:
         df_noticias = pd.DataFrame(noticias)
         return df_noticias
     else:
         print("Nenhuma notícia encontrada.")
-
-coleta()
 
 
 
