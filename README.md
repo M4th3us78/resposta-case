@@ -69,3 +69,7 @@ Siga as intruções abaixo para conseguir executar a aplicação.
     streamlit run app.py
 
 Após executar o último comando, seu navegador abrirá automaticamentecom com o Dashboard.
+
+## Download dos dados
+
+Ao final da página haverá um botão disponibilizando o download do arquivo em formato CSV.
