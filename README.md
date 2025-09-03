@@ -6,6 +6,29 @@ Repositório desenvolvido com o intuito de realizar a análise de notícias no f
 
 Analisar os sentimentos das notícias sobre o tema pesquisado.
 
+# Como funciona
+
+A aplicação realiza um pipeline completo:
+1. **Coleta de Dados:** Utiliza o feed RSS do Google Notícias para buscar as últimas matérias sobre o tema.
+
+2. **Processamento de Texto:** Limpa e normaliza os títulos das notícias.
+
+3. **Análise de Sentimento:** Classifica cada notícia como positiva, negativa ou neutra com base em uma lista de palavras-chave.
+
+4. **Visualização:** Apresenta os dados em um dashboard interativo construído com Streamlit, contendo gráficos e uma nuvem de palavras.
+
+
+## Tecnologias Utilizadas
+
+As seguintes ferramentas e bibliotecas foram utilizadas na construção do projeto:
+
+-   **Linguagem:** Python 3.10
+-   **Dashboard:** Streamlit
+-   **Manipulação de Dados:** Pandas
+-   **Requisições HTTP:** Requests
+-   **Processamento de Texto:** WordCloud, Unidecode
+-   **Visualização de Dados:** Plotly, Matplotlib
+
 ## Como executar o projeto
 
 Siga as intruções abaixo para conseguir executar a aplicação.

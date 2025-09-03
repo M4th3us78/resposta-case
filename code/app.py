@@ -16,11 +16,9 @@ df = proc.proces_sentimento(df)
 st.set_page_config(layout="wide")
 st.title("Painel de Monitoramento de Percepção sobre IA no Piauí.")
 
-"""Tabela com as notícias coletadas"""
 st.header("Notícias Coletadas")
 st.dataframe(df[['titulo', 'sentimento']])
 
-"""Gráfico com a distribuição de sentimentos"""
 st.header("Análise de Sentimentos")
 sent_cont = df['sentimento'].value_counts()
 fig_pie = px.pie(
@@ -31,10 +29,10 @@ fig_pie = px.pie(
     color_discrete_map = {'Positivo':'green' , 'Negativo':'red' , 'Neutro':'blue'}
 )
 st.plotly_chart(fig_pie)
-"""Rodapé"""
+
 st.caption("Esta análise de sentimento é baseada em regras simples e pode não capturar sarcasmo ou contextos complexos")
 
-"""Nuvem de Palavras"""
+
 st.header("Nuvem de Palavras")
 portuguese_stopwords = set(stopwords.words('portuguese'))
 
@@ -45,4 +43,16 @@ fig_wc, ax = plt.subplots()
 ax.imshow(wordcloud, interpolation='bilinear')
 ax.axis('off')
 st.pyplot(fig_wc)
+
+
+st.header("Download dos Dados")
+st.write("Clique no botão abaixo para baixar os dados em formato CSV.")
+csv = df.to_csv(index=False)
+
+st.download_button(
+    label="Baixar arquivo CSV",
+    data=csv,
+    file_name="Notícias Coletadas.csv",
+    mime="text/csv"
+)
 
