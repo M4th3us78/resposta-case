@@ -46,9 +46,8 @@ Siga as intruções abaixo para conseguir executar a aplicação.
     
     git clone https://github.com/M4th3us78/resposta-case
 
-    cd SEU-REPOSITORIO
+    cd resposta-case
     
-
 2. **Crie e ative um ambiente virtual**
     ``` bash
     ## Para Linux/macOS
