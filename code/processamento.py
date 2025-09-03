@@ -40,7 +40,7 @@ def proces_sentimento(df):
     return df
 
 
-print(proces_sentimento(req.coleta()))
+
 
 
 

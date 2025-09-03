@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import pandas as pd
 
+
 def coletar_noticias(termo_busca):
     url = f"https://news.google.com/rss/search?q={termo_busca}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
 
@@ -24,7 +25,7 @@ def coletar_noticias(termo_busca):
                     'link' : link,
                     'descricao' : descricao
                 })
-        return dados_noticias[:50]
+        return dados_noticias[:15]
     
     except requests.exceptions.RequestException as e:
         print(f"Erro ao coletar notícias: {e}")
@@ -39,7 +40,6 @@ def coleta():
 
     if noticias:
         df_noticias = pd.DataFrame(noticias)
-        print(df_noticias)
         return df_noticias
     else:
         print("Nenhuma notícia encontrada.")
